@@ -66,6 +66,7 @@ static void MX_TIM2_Init(void);
 
 uint8_t temp = 0;
 uint8_t buffer[7] = {'\r', '\n', ' ', ' ', ' ', ' ', ' '};
+//uint8_t data[8] = {'\r', '\n', 'W', 'A', 'I', 'T', '\r', '\n'};
 uint8_t index_buffer = 0;
 uint8_t buffer_flag = 0;
 uint32_t ADC_value = 0;
@@ -89,6 +90,7 @@ void command_parser_fsm(void){
 	switch(curr){
 	case WAIT:
 		if(temp == '!') curr = EM;
+//		HAL_UART_Transmit(&huart2, data, 8, 1000);
 		break;
 
 	case EM:
